@@ -116,7 +116,6 @@ namespace TestUploadFiles.Controllers
             return BadRequest();
         }
        
-
         public IActionResult Privacy()
         {
             return View();
