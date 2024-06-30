@@ -1,0 +1,35 @@
+﻿@model ImagesViewModel
+
+@{
+    ViewData["Title"] = "Update Product Images";
+}
+
+<div class="d-flex flex-wrap justify-content-start">
+    @foreach (var img in Model.Images)
+    {
+        <div class="image-container mx-3 my-3 text-center">
+            <img src="@($"{Settings.imagesPathProducts}/{img}")" class="rounded border border-3" style="width:200px;height:200px" />
+            <div class="mt-2">
+                <form method="post" asp-action="DeleteImage" asp-controller="Home" class="delete-form d-inline-block">
+                    <input type="hidden" name="productId" value="@Model.Id" />
+                    <input type="hidden" name="image" value="@img" />
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+    <form asp-action="UpdateImages" method="post" enctype="multipart/form-data">
+        <input hidden asp-for="@Model.Id" />
+<div class="col-6 mt-4">
+    <input asp-for="FormFiles" type="file" id="imageCover" multiple/>
+</div>
+<span asp-validation-for="FormFiles" class="text text-danger"></span>
+
+
+<div class="col-4 mt-4">
+    <button type="submit" class="btn btn-success"> Update </button>
+</div>
+    </form>

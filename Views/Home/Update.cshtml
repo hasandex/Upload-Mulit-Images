@@ -1,0 +1,41 @@
+﻿@model FormProductViewModel
+
+@{
+    ViewData["Title"] = "Update Product";
+}
+
+<form asp-action="Update">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <input name="Id" type="text" hidden value="@Model.Id" />
+                <label asp-for="Name" class="text text-black"></label>
+            </div>
+            <div class="col-1">
+                <input asp-for="Name" type="text" placeholder="Enter Product Name" />
+            </div>
+            <span asp-validation-for="Name" class="text text-danger"></span>
+
+        </div>
+        <div class="row mt-4">
+            <div class="col-1">
+                <label asp-for="Description" class="text text-black"></label>
+            </div>
+            <div class="col-3">
+                <textarea rows="5" cols="50" asp-for="Description" placeholder="Enter Product Description">
+                    </textarea>
+            </div>
+            <span asp-validation-for="Description" class="text text-danger"></span>
+        </div>
+        <div class="col-4 mt-4">
+            <button type="submit" class="btn btn-success"> Update </button>
+        </div>
+        <div class="mt-2">
+            <a asp-action="UpdateImages" asp-route-id="@Model.Id">show product images</a>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <script src="~/js/image_preview.js"></script>
+}

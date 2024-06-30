@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Product>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-danger">
+        <p>No Products</p>
+    </div>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Description</th>
+        </tr>
+        <tbody>
+            @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Description</td>
+                        <td><a asp-action="Update" asp-route-id="@product.Id">edit</a></td>
+                    </tr>
+                }
+        </tbody>
+    </table>
+}
