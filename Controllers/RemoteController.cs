@@ -9,5 +9,9 @@ namespace TestUploadFiles.Controllers
         //hello
             return View();
         }
+        public IActionResult Get()
+        {
+            return View();
+        }
     }
 }
